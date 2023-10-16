@@ -12,13 +12,15 @@ fclose($log);
 
 
 $getdata = json_decode($data.true);
-$userId = $getdata['message']['from']['id'];
+$chatId = $getdata['message']['chat']['id'];
 $username = $getdata['message']['from']['username'];
 $usermsg = $getdata['message']['text'];
+$chatId=(int)$chatId;
+
 
 $botMessage = "你好 ";
 $paraments = array(
-    "chat_id"=>(int)$userId,
+    "chat_id"=>$chatId,
     "text"=>$botMessage.$username,
     "parse_mode"=>"html"
 );
